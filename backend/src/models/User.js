@@ -1,4 +1,5 @@
 const moongose = require("../database");
+const bcrypt = require("bcryptjs");
 
 const UserSchema = new moongose.Schema({
     name: {
@@ -20,6 +21,15 @@ const UserSchema = new moongose.Schema({
         type: Date,
         default: Date.now,
     }
+});
+
+
+// Antes de salvar o usuário, criptografe a senha
+UserSchema.pre("save", async function(next){
+
+    const hash = await bcrypt.hash(this.password, 10);
+    this.password = hash;
+    
 });
 
 const User = moongose.model("User", UserSchema);
