@@ -14,6 +14,8 @@ As seguintes tecnologias serão utilizadas neste projeto:
     Express
     MongoDB
     JSON Web Token (JWT)
+    Swagger ( Documentação )
+    JUnit5 ( testes )
 
 **Instalação**
 
